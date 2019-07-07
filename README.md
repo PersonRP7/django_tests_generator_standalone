@@ -5,4 +5,4 @@ A standalone python script for generating django tests.
 
 2.The app has to include a tests folder with an empty __init__.py inside.
 
-3.Open a command line window in the project dir and type ```python mts.py```.
+3.Open a command line window in the project dir and type ```python mts_functional.py```.
