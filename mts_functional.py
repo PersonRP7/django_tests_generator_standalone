@@ -16,7 +16,7 @@ def set_test_name():
     test_name += test_input
     return test_input
 
-def see_if_tests_dir_reachable():
+def see_if_tests_dir_reachable(app_name):
     try:
         tests = os.listdir(f'./{app_name}/tests')
         return True
@@ -29,7 +29,7 @@ folder with an '__init__.py' inside."""
         )
         return False
 
-def see_if_test_already_exists():
+def see_if_test_already_exists(app_name, test_name):
     test_dir = os.listdir(f"./{app_name}/tests")
     print(test_dir)
     if f"test_{test_name}.py" in test_dir:
@@ -52,7 +52,7 @@ press anything else to cancel:
     else:
         return False
 
-def create_test():
+def create_test(app_name, test_name):
     pth = os.path.abspath(
         os.path.join(
             app_name,
@@ -73,23 +73,23 @@ class Test{test_name}(TestCase):
     sys.stdout.write(
         f"{test_name} created."
     )
+    return f"{test_name} created."
 
 def exiting():
     sys.stdout.write("Exiting.")
-    print("printing")
     return 0
 
 def program_runner():
     set_app_name()
     set_test_name()
-    if see_if_tests_dir_reachable():
-        if see_if_test_already_exists():
+    if see_if_tests_dir_reachable(app_name):
+        if see_if_test_already_exists(app_name, test_name):
             if ask_user_if_he_wants_to_overwrite_test():
-                create_test()
+                create_test(app_name, test_name)
             else:
                 exiting()
         else:
-            create_test()
+            create_test(app_name, test_name)
 
 if __name__ == "__main__":
     program_runner()
